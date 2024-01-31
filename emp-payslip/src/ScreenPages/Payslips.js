@@ -159,8 +159,9 @@ const Payslips = () => {
           cell:(row)=><div> <button className="btn btn-sm " style={{backgroundColor:"transparent"}} onClick={()=>onView(row.id,row.userId)} ><EyeFill size={22} color='#2255a4'/></button>
            <button className="btn btn-sm " style={{backgroundColor:"transparent"}} onClick={()=>downloadFile(row.id)} ><Download size={22} color='orange'/></button>
           {/* <button className="btn btn-sm " style={{backgroundColor:"transparent"}} onClick={()=>onDelete(row.id)} ><XSquareFill size={22} color='#da542e'/></button> */}
-          </div>
 
+          </div>
+           
               }
           ]
   const getFilteredList = async (searchData) => {
