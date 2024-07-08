@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "PORT=6002 react-scripts start",
+    "build": "react-scripts build",
     "build": "ESLINT_NO_DEV_ERRORS=true react-scripts build"
     
     "test": "react-scripts test --coverage --reporters=default --reporters=jest-junit",
