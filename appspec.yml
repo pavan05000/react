@@ -1,11 +1,14 @@
 version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /home/ubuntu/react
-hooks:
-  AfterInstall:
-    - location: scripts/deploy.sh
-      timeout: 300
-      runas: ubuntu
-
+  os: linux
+  files:
+    - source: /
+      destination: /home/ubuntu/react
+  hooks:
+    BeforeInstall:
+      - location: scripts/cleanup.sh
+        timeout: 300
+        runas: ubuntu
+    AfterInstall:
+      - location: scripts/deploy.sh
+        timeout: 300
+        runas: ubuntu
