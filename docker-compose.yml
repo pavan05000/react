@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  react-frontend:
+    build: .
+    ports:
+      - "6002:6002"
+
