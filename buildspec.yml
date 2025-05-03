@@ -4,23 +4,21 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing dependencies"
-      - npm install --legacy-peer-deps
-      - npm install styled-components
+      - echo "Install phase complete"
   build:
     commands:
-      - echo "Building React app"
-      - npm run build
+      - echo "No build here — handled in Dockerfile"
   post_build:
     commands:
-      - echo "Build completed"
-      - test -f appspec.yml || (echo "Error: appspec.yml not found" && exit 1)
+      - echo "Post-build phase complete"
 artifacts:
   files:
     - appspec.yml
     - scripts/**/*
-    - build/**/*
     - Dockerfile
     - docker-compose.yml
-  base-directory: .
+    - package.json
+    - package-lock.json
+    - src/**/*
+    - public/**/*
   discard-paths: no
