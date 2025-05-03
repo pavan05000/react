@@ -9,6 +9,8 @@ RUN npm install -g serve
 
 #plugin issue fixed
 RUN npm install --save-dev @babel/plugin-proposal-private-property-in-object
+RUN npx update-browserslist-db@latest --update-db --no-git
+
 
 COPY . .
 
