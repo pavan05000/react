@@ -1,22 +1,25 @@
-# using node version 22
 FROM node:22.13.1-alpine
-# workinhg directory in the container
+
+# Set working directory
 WORKDIR /app
-#copying package files into the container
+
+# Copy package files and install dependencies
 COPY package*.json ./
-#to install the dependencies
 RUN npm install --legacy-peer-deps
 RUN npm install styled-components
+RUN npm install -g serve 
 
-#copying the entire project directory into the container
+# Copy entire app source
 COPY . .
-#setting up environment variable port
+
+# Set the environment variable for the port
 ENV PORT=6002
-#build the angular app - for build and run locally first
+
+# Build the React app for production
 RUN npm run build
-#installing simple server to serve teh built app
-RUN npm install -g serve
-#expose the port number for outside
+
+# Expose the port
 EXPOSE 6002
-#command to serve the built Angular app
-CMD ["npm", "start"]
+
+# Serve the production build using "serve"
+CMD ["serve", "-s", "build", "-l", "6002"]
