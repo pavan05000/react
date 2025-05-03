@@ -1,19 +1,20 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
-# Install dependencies
-COPY package*.json ./
-RUN npm install --legacy-peer-deps && \
-    npm install styled-components && \
-    npm install --save-dev @babel/plugin-proposal-private-property-in-object && \
-    npm install -g serve && \
-    npx update-browserslist-db@latest --update-db --no-git
+# Copy only package.json and lock first for caching
+COPY package.json package-lock.json ./
 
-# Copy source and build
+# Use legacy-peer-deps and skip audit fix (DO NOT auto-fix in production builds)
+RUN npm install --legacy-peer-deps
+
+# Then copy the rest of the code
 COPY . .
+
+# Build React app
 RUN npm run build
 
-# Serve build on port 6002
-EXPOSE 6002
-CMD ["serve", "-s", "build", "-l", "6002"]
+# Optional: Serve using `serve`
+RUN npm install -g serve
+
+CMD ["serve", "-s", "build"]
