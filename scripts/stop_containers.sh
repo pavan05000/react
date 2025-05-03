@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /home/ubuntu/react
-docker-compose down || true
+docker compose down || true
 
