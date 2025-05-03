@@ -7,10 +7,10 @@ files:
 hooks:
   BeforeInstall:
     - location: scripts/stop_containers.sh
-      timeout: 30
+      timeout: 300
       runas: ubuntu
   AfterInstall:
     - location: scripts/start_containers.sh
-      timeout: 30
+      timeout: 300
       runas: ubuntu
 
